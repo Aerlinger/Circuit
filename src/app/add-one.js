@@ -3,7 +3,7 @@ define([], function() {
 
   AddOne.addOne = function(x) {
     return x + 1;
-  }
+  };
 
   return AddOne;
 });

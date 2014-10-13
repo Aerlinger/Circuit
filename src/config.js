@@ -1,12 +1,26 @@
-(function() {
+(function () {
   // This is ultimately fed to require.config().
   var Config = {
     'paths': {
       'main': 'main',
 
       // src
-      'add-one': 'app/add-one'
-    }
+      'add-one': 'app/add-one',
+      Circuit: 'app/Circuit'
+
+    },
+    packages: [
+      {
+        name: 'cs',
+        location: '../bower_components/require-cs/',
+        main: 'cs'
+      },
+      {
+        name: 'coffee-script',
+        location: '../bower_components/coffeescript/',
+        main: 'extras/coffee-script'
+      }
+    ]
   };
 
   // If _TEST_MODE, configre to '../' since our tests are stored in './test/'.
@@ -19,7 +33,7 @@
   // If 'define' exists as a function, run main.
   if (typeof define === 'function') {
     require.config(Config);
-    require(['main'], function(Main) {
+    require(['main'], function (Main) {
       Main.main();
     });
     return true;
