@@ -1,13 +1,16 @@
 (function () {
+  "use strict";
+
   // This is ultimately fed to require.config().
   var Config = {
     'paths': {
       'main': 'main',
 
       // src
-      'add-one': 'app/add-one',
-      Circuit: 'app/Circuit'
-
+      Circuit: 'app/Circuit',
+      Observer: 'app/observer',
+      CircuitState: 'app/CircuitState',
+      CircuitEngineParams: 'app/simulationParams'
     },
     packages: [
       {

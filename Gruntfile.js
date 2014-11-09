@@ -25,25 +25,38 @@ module.exports = function(grunt) {
           optimize: 'uglify2',
           optimizeAllPluginResources: true,
           preserveLicenseComments: false
-	})
+  })
       }
     },
     mocha: {
       options: {
         reporter: 'Nyan', // Duh!
+        require: 'coffee-script/register',
         run: true
+      },
+      src: ['test/*.coffee', 'test/*.js']
+    },
+    coffee: {
+      glob_to_multiple: {
+        expand: true,
+//        flatten: true,
+        cwd: './',
+        src: ['src/**/*.coffee'],
+//        dest: 'build',
+        ext: '.js'
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-mocha');
+  grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
 
   grunt.registerTask('test', 'Run Mocha tests.', function() {
     // If not --test option is specified, run all tests.
     var test_case = grunt.option('test') || '**/*';
 
-    grunt.config.set('mocha.browser', ['test/' + test_case + '.html']);
+//    grunt.config.set('mocha.browser', ['test/' + test_case + '.html']);
     grunt.task.run('mocha');
   });
   grunt.registerTask('dist', ['requirejs']);

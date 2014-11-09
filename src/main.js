@@ -4,9 +4,8 @@ define([], function() {
   // This is your main function. After configuration in config.js, it is called.
   Main.main = function() {
     require([
-      'add-one'
-    ], function(AddOne) {
-      console.log(AddOne.addOne(1));
+    ], function() {
+      console.log(true);
     });
   };
 
